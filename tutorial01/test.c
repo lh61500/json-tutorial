@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "leptjson.h"
+#include "leptjson.c"
 
 static int main_ret = 0;
 static int test_count = 0;
@@ -24,6 +25,8 @@ static void test_parse_null() {
     lept_value v;
     v.type = LEPT_FALSE;
     EXPECT_EQ_INT(LEPT_PARSE_OK, lept_parse(&v, "null"));
+	EXPECT_EQ_INT(LEPT_PARSE_OK, lept_parse(&v, "true"));
+	EXPECT_EQ_INT(LEPT_PARSE_OK, lept_parse(&v, "false"));
     EXPECT_EQ_INT(LEPT_NULL, lept_get_type(&v));
 }
 
